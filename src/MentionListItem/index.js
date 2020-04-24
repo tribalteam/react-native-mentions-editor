@@ -22,16 +22,17 @@ export class MentionListItem extends React.PureComponent {
     return (
       <TouchableOpacity
         activeOpacity={0.8}
+        key={user.id}
         style={[styles.suggestionItem, editorStyles.mentionListItemWrapper]}
         onPress={
-          () => {    
-            console.log(user); 
+          () => {
+            console.log("I pressed this user", user);
             return this.onSuggestionTap(user);
           }
         }
       >
         <Image
-          source={user && user.picture ? { uri: user.picture } : sourceEmpty}
+          source={user && user.avatar ? { uri: user.avatar } : sourceEmpty}
           style={[styles.image, editorStyles.mentionListItemImage]}
           resizeMode={'contain'}
         />

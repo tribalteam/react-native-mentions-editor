@@ -155,7 +155,9 @@ export class Editor extends React.Component {
   }
 
   updateSuggestions(lastKeyword) {
-    this.props.searchUsers(lastKeyword);
+    if(this.props.searchUsers){
+      this.props.searchUsers(lastKeyword);
+    }
 
     this.setState({
       keyword: lastKeyword
@@ -237,10 +239,10 @@ export class Editor extends React.Component {
      * Also updates the remaining string if there
      * are any adjcent mentions text with the new one.
      */
-    // const {inputText, menIndex} = this.state;
-    // let initialStr = inputText.substr(0, menIndex).trim();
+      // const {inputText, menIndex} = this.state;
+      // let initialStr = inputText.substr(0, menIndex).trim();
 
-    // replace last string
+      // replace last string
     let initialStr = inputText.slice(0, inputText.length - inputText.split(' ').pop().length)
     if (!EU.isEmpty(initialStr)) {
       initialStr = initialStr + " ";
@@ -417,9 +419,9 @@ export class Editor extends React.Component {
         formattedText = formattedText.concat(lastStr);
       }
       mentionList.push({
-          username: men.username,
-          ref: men.ref,
-        });
+        username: men.username,
+        ref: men.ref,
+      });
     });
     return mentionList;
   }
@@ -528,7 +530,7 @@ export class Editor extends React.Component {
         }
       }
     }
-
+    // console.log("what is the text HELLLO &&&&", text)
     this.setState({
       inputText: text,
       // formattedText: this.formatText(text)
@@ -612,8 +614,8 @@ export class Editor extends React.Component {
     };
 
     return (
-      <View style={editorStyles.mainContainer}>
-       {props.renderMentionList ? (
+      <View style={[editorStyles.mainContainer,]}>
+        {props.renderMentionList ? (
           props.renderMentionList(mentionListProps)
         ) : (
           this.state.showSuggestionsPanel && <Animated.View
