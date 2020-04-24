@@ -435,6 +435,7 @@ export class Editor extends React.Component {
   }
 
   onChange = (inputText, fromAtBtn) => {
+    console.log("test", inputText)
     let text = inputText;
     const prevText = this.state.inputText;
     let selection = { ...this.state.selection };
@@ -614,7 +615,7 @@ export class Editor extends React.Component {
     };
 
     return (
-      <View style={[editorStyles.mainContainer,]}>
+      <View style={[editorStyles.mainContainer]}>
         {props.renderMentionList ? (
           props.renderMentionList(mentionListProps)
         ) : (

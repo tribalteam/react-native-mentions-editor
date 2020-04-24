@@ -16,7 +16,6 @@ export default StyleSheet.create({
     marginHorizontal: 10
   },
   inputWrapper: {
-    flex:1,
     flexDirection: 'row',
     maxHeight:120,
     alignItems: 'center',
