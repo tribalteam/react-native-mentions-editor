@@ -20,8 +20,8 @@ export class Editor extends React.Component {
     searchUsers: PropTypes.func,
     initialValue: PropTypes.string,
     clearInput: PropTypes.bool,
+    scrollToEnd: PropTypes.bool,
     onChange: PropTypes.func,
-    showEditor: PropTypes.bool,
     toggleEditor: PropTypes.func,
     showMentions: PropTypes.bool,
     onHideMentions: PropTypes.func,
@@ -76,6 +76,7 @@ export class Editor extends React.Component {
     this.previousChar = " ";
   }
   static getDerivedStateFromProps(nextProps, prevState) {
+
     if (nextProps.clearInput !== prevState.clearInput) {
       return { clearInput: nextProps.clearInput };
     }
@@ -110,7 +111,9 @@ export class Editor extends React.Component {
     //   //don't need to close on false; user show select it.
     //   this.onChange(this.state.inputText, true);
     // }
-
+    if (prevState.showSuggestionsPanel !== this.state.showSuggestionsPanel) {
+      this.props.scrollToEnd(true)
+    }
     if (prevProps.clearInput !== this.props.clearInput) {
       this.setState({
         inputText: "",
