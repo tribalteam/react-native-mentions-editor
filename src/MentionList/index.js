@@ -23,12 +23,12 @@ export class MentionList extends React.PureComponent {
 
   renderSuggestionsRow = ({ item }) => {
     return (
-      <MentionListItem
-        onSuggestionTap={this.props.onSuggestionTap}
-        item={item}
-        editorStyles={this.props.editorStyles}
-        sourceEmpty={this.props.sourceEmpty}
-      />
+        <MentionListItem
+          onSuggestionTap={this.props.onSuggestionTap}
+          item={item}
+          editorStyles={this.props.editorStyles}
+          sourceEmpty={this.props.sourceEmpty}
+        />
     );
   };
 

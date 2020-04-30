@@ -82,7 +82,7 @@ export class Editor extends React.Component {
     }
 
     if (nextProps.showMentions && !prevState.showMentions) {
-      const newInputText = `${prevState.inputText}${prevState.trigger}`;
+      const newInputText = `${prevState.inputText}`;
       return {
         inputText: newInputText,
         showMentions: nextProps.showMentions
@@ -98,6 +98,13 @@ export class Editor extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
+    if(this.props.initialValue !== prevProps.initialValue && this.props.initialValue !== undefined ){
+
+      // console.log("what is the BOB 9")
+      // const updatedText = [this.state.inputText, this.props.initialValue]
+      // this.props.updatedText(updatedText);
+      // this.onChange(this.props.initialValue)
+    }
     // only update chart if the data has changed
     // if (this.state.inputText !== "" && this.state.clearInput) {
     //   this.setState({
@@ -295,7 +302,7 @@ export class Editor extends React.Component {
       inputText,
       menIndex
     );
-
+    console.log("what ist BOB 10", inputText, menIndex)
     const username = `@${user.username}`;
     const text = `${initialStr}${username} ${remStr}`;
     //'@[__display__](__id__)' ///find this trigger parsing from react-mentions
@@ -430,6 +437,7 @@ export class Editor extends React.Component {
   }
 
   sendMessageToFooter(text) {
+     // console.log("what is BOB 3", text)
     this.props.onChange({
       displayText: text,
       text: this.formatTextWithMentions(text),
@@ -438,7 +446,7 @@ export class Editor extends React.Component {
   }
 
   onChange = (inputText, fromAtBtn) => {
-    console.log("test", inputText)
+
     let text = inputText;
     const prevText = this.state.inputText;
     let selection = { ...this.state.selection };
@@ -534,7 +542,7 @@ export class Editor extends React.Component {
         }
       }
     }
-    // console.log("what is the text HELLLO &&&&", text)
+    // console.log("what is the text HELLLO BOB 8", text)
     this.setState({
       inputText: text,
       // formattedText: this.formatText(text)
