@@ -441,7 +441,8 @@ export class Editor extends React.Component {
     this.props.onChange({
       displayText: text,
       text: this.formatTextWithMentions(text),
-      mentionList: this.getMentionList(text)
+      mentionList: this.getMentionList(text),
+      mentionData: this.mentionsMap
     });
   }
 
